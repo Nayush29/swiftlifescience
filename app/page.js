@@ -12,16 +12,16 @@ import { AcademicCapIcon, UsersIcon, GlobeAltIcon, BuildingStorefrontIcon, Prese
 export default function HomePage() {
   const [visibleLogos, setVisibleLogos] = useState([]);
   const allLogos = [
-    '/partners/1.jpg',
-    '/partners/2.jpg',
-    '/partners/3.jpg',
-    '/partners/4.jpg',
-    '/partners/5.jpg',
-    '/partners/6.jpg',
-    '/partners/7.jpg',
-    '/partners/8.jpg',
-    '/partners/9.jpg',
-    '/partners/10.jpg',
+    '/Partners/1.jpg',
+    '/Partners/2.jpg',
+    '/Partners/3.jpg',
+    '/Partners/4.jpg',
+    '/Partners/5.jpg',
+    '/Partners/6.jpg',
+    '/Partners/7.jpg',
+    '/Partners/8.jpg',
+    '/Partners/9.jpg',
+    '/Partners/10.jpg',
   ];
 
   const logosToShow = 6;
@@ -215,7 +215,7 @@ export default function HomePage() {
               },
               {
                 title: 'Pharmaceutical Manufacturing',
-                desc: 'We maintain the highest standards of safety and quality in manufacturing. Our partnerships help ensure safe and effective products for clinical trials.',
+                desc: 'We maintain the highest standards of safety and quality in manufacturing. Our Partnerships help ensure safe and effective products for clinical trials.',
                 img: '/whatwedo/pharmaceutical-manufacturing.jpeg',
               },
             ].map((item, idx) => (
