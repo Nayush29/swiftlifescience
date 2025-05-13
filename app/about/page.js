@@ -152,7 +152,7 @@ export default function AboutPage() {
                         </div>
                         <div className="md:w-1/2 mt-8 md:mt-0">
                             <Image
-                                src="/about/our team.webp"
+                                src="/about/our team.jpg"
                                 alt="Our Team"
                                 width={600}
                                 height={400}

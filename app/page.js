@@ -12,16 +12,16 @@ import { AcademicCapIcon, UsersIcon, GlobeAltIcon, BuildingStorefrontIcon, Prese
 export default function HomePage() {
   const [visibleLogos, setVisibleLogos] = useState([]);
   const allLogos = [
-    '/partners/1.webp',
-    '/partners/2.webp',
-    '/partners/3.webp',
-    '/partners/4.webp',
-    '/partners/5.webp',
-    '/partners/6.webp',
-    '/partners/7.webp',
-    '/partners/8.webp',
-    '/partners/9.webp',
-    '/partners/10.webp',
+    '/partners/1.jpg',
+    '/partners/2.jpg',
+    '/partners/3.jpg',
+    '/partners/4.jpg',
+    '/partners/5.jpg',
+    '/partners/6.jpg',
+    '/partners/7.jpg',
+    '/partners/8.jpg',
+    '/partners/9.jpg',
+    '/partners/10.jpg',
   ];
 
   const logosToShow = 6;
