@@ -3,7 +3,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -12,70 +12,49 @@ import { AcademicCapIcon, UsersIcon, GlobeAltIcon, BuildingStorefrontIcon, Prese
 export default function HomePage() {
   const [visibleLogos, setVisibleLogos] = useState([]);
   const allLogos = [
-    '/Partners/1.jpg',
-    '/Partners/2.jpg',
-    '/Partners/3.jpg',
-    '/Partners/4.jpg',
-    '/Partners/5.jpg',
-    '/Partners/6.jpg',
-    '/Partners/7.jpg',
-    '/Partners/8.jpg',
-    '/Partners/9.jpg',
-    '/Partners/10.jpg',
+    '/Partners/1.jpg', '/Partners/2.jpg', '/Partners/3.jpg',
+    '/Partners/4.jpg', '/Partners/5.jpg', '/Partners/6.jpg',
+    '/Partners/7.jpg', '/Partners/8.jpg', '/Partners/9.jpg', '/Partners/10.jpg'
   ];
-
   const logosToShow = 6;
   const intervalTime = 5000;
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const heroImages = ['/hero/OIP1.jpg', '/hero/OIP2.jpg','/hero/OIP4.jpg'];
+
   useEffect(() => {
     setVisibleLogos(allLogos.slice(0, logosToShow));
-
-    const interval = setInterval(() => {
-      setVisibleLogos((prevVisibleLogos) => {
-        const nextIndex = (allLogos.indexOf(prevVisibleLogos[0]) + logosToShow) % allLogos.length;
+    const logoInterval = setInterval(() => {
+      setVisibleLogos(prev => {
+        const nextIndex = (allLogos.indexOf(prev[0]) + logosToShow) % allLogos.length;
         return allLogos.slice(nextIndex, nextIndex + logosToShow);
       });
     }, intervalTime);
 
-    return () => clearInterval(interval);
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex(prev => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => {
+      clearInterval(logoInterval);
+      clearInterval(imageInterval);
+    };
   }, []);
 
   const stats = [
-    {
-      label: 'Years of Research Experience',
-      value: 24,
-      icon: <AcademicCapIcon className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      label: 'Staff Dedicated to Quality',
-      value: 40,
-      icon: <UsersIcon className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      label: 'Distribution Channel Across States',
-      value: 1000,
-      icon: <BuildingStorefrontIcon className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      label: 'Operations Across Countries',
-      value: 19,
-      icon: <GlobeAltIcon className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      label: 'Pharmaceutical Companies Trusted Partnership',
-      value: 14,
-      icon: <PresentationChartBarIcon className="w-8 h-8 text-indigo-600" />
-    }
+    { label: 'Years of Research Experience', value: 24, icon: <AcademicCapIcon className="w-8 h-8 text-indigo-600" /> },
+    { label: 'Staff Dedicated to Quality', value: 40, icon: <UsersIcon className="w-8 h-8 text-indigo-600" /> },
+    { label: 'Distribution Channel Across States', value: 1000, icon: <BuildingStorefrontIcon className="w-8 h-8 text-indigo-600" /> },
+    { label: 'Operations Across Countries', value: 19, icon: <GlobeAltIcon className="w-8 h-8 text-indigo-600" /> },
+    { label: 'Pharmaceutical Companies Trusted Partnership', value: 14, icon: <PresentationChartBarIcon className="w-8 h-8 text-indigo-600" /> }
   ];
 
   const Counter = ({ endValue }) => {
     const [count, setCount] = useState(0);
-
     useEffect(() => {
       let start = 0;
-      const duration = 2; // seconds
+      const duration = 2;
       const increment = endValue / (duration * 60);
-
       const interval = setInterval(() => {
         start += increment;
         if (start >= endValue) {
@@ -84,11 +63,9 @@ export default function HomePage() {
         } else {
           setCount(Math.floor(start));
         }
-      }, 1000 / 60); // update every frame
-
+      }, 1000 / 60);
       return () => clearInterval(interval);
     }, [endValue]);
-
     return <motion.span>{count}</motion.span>;
   };
 
@@ -104,44 +81,31 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative h-[90vh] w-full overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-          aria-label="Background video showcasing innovation"
-        >
-          <source src="/background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
+        <div className="absolute top-0 left-0 w-full h-full z-[-1]">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={heroImages[currentImageIndex]}
+              src={heroImages[currentImageIndex]}
+              alt="Hero Background"
+              className="w-full h-full object-cover absolute"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+            />
+          </AnimatePresence>
+        </div>
         <div className="relative z-10 flex flex-col justify-center items-center h-full text-center text-white px-6 md:px-12">
-          <motion.h1
-            className="text-4xl md:text-6xl font-extrabold mb-6 text-shadow-lg leading-tight tracking-tight"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-          >
+          <motion.h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight"
+            initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}>
             Welcome to Swift Life Sciences
           </motion.h1>
-          <motion.p
-            className="text-lg md:text-2xl max-w-3xl mb-8 px-4 text-gray-200 drop-shadow-md"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-          >
+          <motion.p className="text-lg md:text-2xl max-w-3xl mb-8 text-gray-200"
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}>
             For a healthier future through science and technology.
           </motion.p>
-          <motion.button
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.4, ease: 'easeOut', delay: 0.6 }}
-            aria-label="Learn more about Swift Life Sciences"
-          >
-            Learn More
-          </motion.button>
         </div>
       </section>
 
