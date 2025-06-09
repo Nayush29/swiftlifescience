@@ -5,8 +5,6 @@ import { motion } from 'framer-motion';
 import Header from '@/components/header';
 import Footer from '@/components/Footer';
 import emailjs from 'emailjs-com';
-import CareersSlider from '@/components/CareersSlider';
-
 const jobDetails = {
   job1: {
     title: "Senior Research Analyst",
@@ -123,14 +121,9 @@ export default function CareerPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-indigo-800 mb-4">
-            Careers at SWIFT Life Sciences
+            Careers
           </h1>
-          <p className="text-gray-600 text-lg">
-            Join us in revolutionizing healthcare solutions and building a better tomorrow.
-          </p>
         </motion.div>
-
-        <CareersSlider />
 
         {/* Job Selection and Application Form */}
         <section>
