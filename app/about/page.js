@@ -42,8 +42,6 @@ export default function AboutPage() {
                         </h2>
                         <p className="text-gray-700 text-lg leading-relaxed mb-6">
                             SWIFT, India’s emerging pharmaceutical company, manufactures and markets world-class generics and branded generic pharmaceuticals, with an aim to expand into Active Pharmaceutical Ingredients (API) in the near future.
-                        </p>
-                        <p className="text-gray-700 text-lg leading-relaxed mb-6">
                             We are committed to delivering high-quality medications, enhancing access to healthcare across India and globally, and driving innovation in our field.
                         </p>
                     </motion.div>

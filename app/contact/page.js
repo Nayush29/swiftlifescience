@@ -53,7 +53,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <section className="relative min-h-screen bg-[url('https://tse4.mm.bing.net/th/id/OIP.zM0wVrIjDb95OByGi5DLdQHaD3?cb=iwp2&rs=1&pid=ImgDetMain')] bg-cover bg-center text-white py-16 px-4">
+      <section className="relative min-h-screen text-white py-16 px-4">
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <motion.div

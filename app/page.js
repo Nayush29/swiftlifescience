@@ -20,7 +20,7 @@ export default function HomePage() {
   const intervalTime = 5000;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = ['/hero/OIP1.jpg', '/hero/OIP2.jpg','/hero/OIP4.jpg'];
+  const heroImages = ['/hero/OIP1.jpg', '/hero/OIP2.jpg', '/hero/OIP4.jpg'];
 
   useEffect(() => {
     setVisibleLogos(allLogos.slice(0, logosToShow));
@@ -95,17 +95,37 @@ export default function HomePage() {
             />
           </AnimatePresence>
         </div>
-        <div className="relative z-10 flex flex-col justify-center items-center h-full text-center text-white px-6 md:px-12">
-          <motion.h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight"
-            initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}>
-            Welcome to Swift Life Sciences
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
+        <div className="relative z-10 flex flex-col justify-center items-center h-full text-center px-6 md:px-12">
+          {/* Gradient Overlay for better contrast */}
+          <motion.h1
+            className="text-white text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-wide drop-shadow-md"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+          >
+            Welcome to <span className="text-blue-400">Swift Life Sciences</span>
           </motion.h1>
-          <motion.p className="text-lg md:text-2xl max-w-3xl mb-8 text-gray-200"
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3 }}>
-            For a healthier future through science and technology.
+
+          <motion.p
+            className="text-lg md:text-2xl text-gray-100 max-w-2xl mb-10 leading-relaxed drop-shadow"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+          >
+            Empowering a healthier future through science, research, and innovation.
           </motion.p>
+          <a href="/about">
+            <motion.button
+              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-xl transition duration-300 transform hover:scale-105"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.4, delay: 0.6 }}
+            >
+              Learn More
+            </motion.button>
+          </a>
+
         </div>
       </section>
 

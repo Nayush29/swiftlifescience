@@ -35,7 +35,7 @@ export default function ManufacturingPage() {
             </section>
 
             {/* Introduction */}
-            <section className="bg-white py-20 px-6 md:px-12">
+            <section className="bg-white py-10 px-5 md:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -45,13 +45,7 @@ export default function ManufacturingPage() {
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-indigo-700 mb-6">Introduction</h2>
                     <p className="text-gray-700 text-lg leading-relaxed">
-                        An organisation’s capabilities are deeply reflected in what it manufactures. SWIFT's
-                        manufacturing infrastructure is an extension of our R&D vision—designed to meet modern
-                        therapeutic demands across diseases while making healthcare affordable and accessible.
-                        <br /><br />
-                        Our state-of-the-art facility enables us to produce branded formulations, generics,
-                        and explore advanced Active Pharmaceutical Ingredients (APIs), addressing both local
-                        and global markets.
+                        An organisation’s capabilities are deeply reflected in what it manufactures. SWIFT'smanufacturing infrastructure is an extension of our R&D vision—designed to meet moderntherapeutic demands across diseases while making healthcare affordable and accessible.Our state-of-the-art facility enables us to produce branded formulations, generics,and explore advanced Active Pharmaceutical Ingredients (APIs), addressing both localand global markets.
                     </p>
                 </motion.div>
             </section>

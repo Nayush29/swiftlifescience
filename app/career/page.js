@@ -120,8 +120,8 @@ export default function CareerPage() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-indigo-800 mb-4">
-            Careers
+          <h1 className="text-4xl md:text-5xl font-bold text-indigo-700 mb-4">
+            Career
           </h1>
         </motion.div>
 
